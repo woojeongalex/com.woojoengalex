@@ -86,6 +86,11 @@ const [password, setPassword] = useState("")
 - `frontend/app/auth/signup-form.tsx`, `login-form.tsx`
 - `frontend/lib/auth-types.ts` (`SignupFormFields`, `EMPTY_SIGNUP`)
 
+## 사용자 메시지
+
+- 오류는 `UserFacingError` / `UI_ERRORS` / `apiErrorOrFallback` — API `detail`·`error` 원문·URL·시크릿 키 이름을 UI에 넣지 않는다.
+- `useAsyncAction`·인라인 오류는 `role="status"`. `window.alert`로 데이터 노출 금지.
+
 ## 리팩터 시
 
 기능·보안(서버 `role` 고정, 비밀번호 로그 금지) 유지, diff 최소. 기존 `AUTH_MESSAGES`·프록시 패턴 유지.
