@@ -1,0 +1,50 @@
+---
+description: 단순·안전·현대적 풀스택 코딩 기준 (IUEM)
+alwaysApply: true
+---
+
+# 코딩 기준
+
+**기술 규칙의 정본은 `docs/DevOPs/`** — 작업 전 `docs/DevOPs/README.md` 및 영역별 `BACKEND_RULES.md` / `REACT_RULES.md` 를 읽는다. 본 파일은 요약이다.
+
+## 구조 (단순하지만 안전)
+
+- **KISS**: 레이어는 필요한 만큼만. pass-through Controller/Service는 만들지 않거나, 한 줄 위임 + 역할이 있을 때만.
+- **상태**: `useState` 난립 금지 — `.cursor/rules/react-form-state.mdc` (FormData 우선, 필요 시 `form` 객체 + 훅).
+- **중복**: 메시지·프록시·타입은 `lib/`, `hooks/`, `app/api/_lib/`에 한곳만.
+- **파일 크기**: 페이지 200줄 넘기면 폼·훅·컴포넌트로 분리.
+
+## 피할 패턴 (올드/불필요)
+
+- 모달·알럿으로 필수 플로우 막기 (성공 시 바로 이동/인라인 메시지).
+- `console.log` / 디버그 `print` 커밋.
+- 사용하지 않는 import·변수·dead admin 스텁 추가.
+- 동일 요청에 레이어마다 INFO 로그 10줄 이상.
+- HOC·과도한 추상화·1~2줄만 쓰는 헬퍼.
+
+## 보안
+
+- 클라이언트 `role` 등 권한 필드 **서버에서 고정** (`"user"`).
+- 비밀번호·토큰 로그/콘솔 출력 금지.
+- 회원가입: check API와 동일한 중복 검사를 **저장 전** repository에서 재검증.
+- `.env`·시크릿 커밋 금지. `localStorage` 세션은 UI용이며 인증 경계로 쓰지 않음 (추후 HttpOnly/JWT 전제).
+
+## 프론트 (Next.js)
+
+- API: `app/api/_lib/proxy.ts` 공통, route는 얇게.
+- `AUTH_MESSAGES` 등 문구 상수화.
+- 폼 제출: `useAsyncAction` 패턴 (`loading` / `error` / `success` / `run`).
+- `runtime = "nodejs"`는 각 `route.ts`에 직접 선언.
+
+## 백엔드 (FastAPI)
+
+상세: `docs/DevOPs/Backend/BACKEND_RULES.md` · `backend/.cursorrules` §0
+
+- `auth_routes` + `UserRepository` + `user_model`(bcrypt). 흐름 로그는 `auth_flow_log`로 레이어당 1줄.
+- `Depends(get_db)` + `AuthError` → HTTPException 매핑.
+- 비동기: `async`/`await` 일관, Windows는 `database.py`에서 event loop 정책 한 번만.
+
+## 변경 시
+
+- 비즈니스 로직·DB 스키마는 깨지지 않게. 리팩터는 동작 동일 + diff 최소.
+- 새 기능은 위 패턴에 맞추고, 기존 파일 스타일을 따름.

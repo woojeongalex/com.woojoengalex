@@ -1,0 +1,26 @@
+---
+description: FastAPI 백엔드 — docs/DevOPs/Backend 규칙 필수
+globs: backend/**/*.py
+alwaysApply: false
+---
+
+# 백엔드 (FastAPI)
+
+**코드 작성 전 docs 필수 (생략 금지):**
+
+1. `docs/DevOPs/README.md`
+2. `docs/DevOPs/Backend/BACKEND_RULES.md`
+
+`backend/.cursorrules` §0과 동일. 충돌 시 **docs 본문 우선**.
+
+## 핵심
+
+- `auth_routes` → Controller → Service → `UserRepository` → `user_model` (bcrypt)
+- `role` 서버 `"user"` 고정; 비밀번호·토큰 로그 금지; INSERT 전 중복 재검증
+- `Depends(get_db)`; `async`/`await` 일관; AUTH 로그 `auth_flow_log` 레이어당 1줄
+- pass-through-only 계층·과도한 INFO·debug print 커밋 금지
+
+## 참고
+
+- `backend/apps/main.py`, `secom/app/auth_routes.py`
+- `.cursor/rules/coding-standards.mdc`

@@ -1,0 +1,91 @@
+---
+description: React 폼 — useState 남용 금지, FormData·상태 객체 압축
+globs: frontend/**/*.tsx
+alwaysApply: false
+---
+
+# React 폼 상태 (필수)
+
+`frontend/**/*.tsx` 수정·작성 시 아래를 따른다. 상세·예시 확장: `docs/DevOPs/Frontend/REACT_RULES.md`.
+
+## 원칙
+
+1. **필드마다 `useState` 금지** — username/password/email 각각 `useState` 나열하지 않는다.
+2. **제출 값**은 **`FormData` + `name` + `Object.fromEntries`** 우선 (비제어 폼).
+3. **실시간 UI만** 별도 state/훅: loading, error, success, 중복 확인, 비밀번호 일치 표시.
+4. 제어 입력이 여러 개 필요하면 **`useState` 객체 하나**로 압축한다.
+
+## 패턴 A — FormData (단순 폼·제출, 권장)
+
+```tsx
+const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault()
+
+  const formData = new FormData(e.currentTarget)
+  const formProps = Object.fromEntries(formData.entries()) as Record<string, FormDataEntryValue>
+
+  const password = String(formProps.password ?? "")
+  const passwordConfirm = String(formProps.password_confirm ?? "")
+  if (password !== passwordConfirm) return
+
+  // API: formProps.username, formProps.nickname 등
+}
+```
+
+```tsx
+<form onSubmit={handleSignup}>
+  <input name="username" required />
+  <input name="nickname" required />
+  <input name="password" type="password" required />
+  <input name="password_confirm" type="password" required />
+  <input name="email" type="email" required />
+  <button type="submit">회원가입</button>
+</form>
+```
+
+## 패턴 B — 상태 객체 하나 (제어 입력·입력 중 검증)
+
+```tsx
+type FormFields = { username: string; nickname: string; password: string; passwordConfirm: string; email: string }
+const [form, setForm] = useState<FormFields>(INITIAL)
+
+const update = (key: keyof FormFields) => (value: string) => {
+  setForm((prev) => ({ ...prev, [key]: value }))
+}
+```
+
+UI 전용은 분리: `useAsyncAction()`, `useAvailabilityCheck()` — 폼 값과 섞지 않는다.
+
+## 패턴 C — 혼합 (회원가입·로그인 실무)
+
+| 구분 | 방식 |
+|------|------|
+| 제출 시 서버 payload | FormData 또는 `form` 객체 |
+| loading / error / success | `useAsyncAction` |
+| 아이디·닉네임 중복 | `useAvailabilityCheck` |
+| 비밀번호 일치 | submit 시 검증 또는 `form.password` / `form.passwordConfirm`만 유지 |
+
+## 금지
+
+```tsx
+// ❌
+const [username, setUsername] = useState("")
+const [nickname, setNickname] = useState("")
+const [password, setPassword] = useState("")
+// ... 필드 수만큼 useState
+```
+
+```tsx
+// ❌ 제출만 FormData면 되는데 전 필드 controlled + useState 난립
+```
+
+## 프로젝트 참고
+
+- `frontend/hooks/use-async-action.ts`
+- `frontend/hooks/use-availability-check.ts`
+- `frontend/app/auth/signup-form.tsx`, `login-form.tsx`
+- `frontend/lib/auth-types.ts` (`SignupFormFields`, `EMPTY_SIGNUP`)
+
+## 리팩터 시
+
+기능·보안(서버 `role` 고정, 비밀번호 로그 금지) 유지, diff 최소. 기존 `AUTH_MESSAGES`·프록시 패턴 유지.
