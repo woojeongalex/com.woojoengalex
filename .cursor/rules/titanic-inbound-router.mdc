@@ -1,0 +1,28 @@
+---
+description: Titanic v1 라우터 — andrews 스켈레톤 · walter thin 패턴
+globs: backend/apps/titanic/adapter/inbound/api/v1/**/*_router.py
+alwaysApply: false
+---
+
+# Titanic inbound v1 라우터
+
+**정본:** `docs/DevOPs/Backend/CLEAN_ARCHITECTURE.md` § Inbound v1 라우터.
+
+## 스켈레톤 (`andrews_blueprint_router.py`)
+
+- 파일 1개 = 기능(캐릭터) 1 `APIRouter`
+- `prefix` + `tags` + 라우트 데코레이터만
+- 미구현: `pass` (또는 501). **비즈니스·DB 코드 넣지 않음**
+
+## 구현 시 (`walter_router.py`)
+
+- `XxxUseCase = Depends(get_xxx_use_case)` — DB 세션은 **deps**에서만 조립
+- 본문: `return await handle_xxx(...)` (**handlers**)
+- import: Port(ABC), schemas, deps, handlers — **ORM/SQLAlchemy 금지**
+
+## 금지 (보안·경계)
+
+1. **라우터에 DB 노출 금지** — `get_db`, `AsyncSession`, SQLAlchemy import/주입 금지. 세션·연결은 **`deps`에서만** Use Case 조립 시 주입.
+2. **라우터에 Repository 금지** — `*PgRepository`, `*Repository` 직접 import·생성·`Depends` 금지. 저장소는 outbound이며 라우터가 알면 경계가 깨지고 공격·오용 표면이 커짐.
+
+추가: `select` 등 raw SQL, Use Case·Interactor 본문 로직, Fat router(검증·매핑·DB·로깅을 한 함수에 몰기 — CSV→스키마 파싱만 라우터에 두는 경우는 예외적으로 허용).

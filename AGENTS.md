@@ -60,7 +60,7 @@
 | 작업 | 읽을 문서 |
 |------|-----------|
 | 시작 | `docs/DevOPs/README.md` |
-| `backend/**`, Python | `docs/DevOPs/Backend/BACKEND_RULES.md` |
+| `backend/**`, Python | **`CLAUDE.md`** (인수인계·패턴) → `docs/DevOPs/Backend/BACKEND_RULES.md` |
 | `frontend/**`, React/TSX | `docs/DevOPs/Frontend/REACT_RULES.md` |
 
 `docs/`에 없는 패턴을 임의로 도입하지 않는다. 새 규칙이 필요하면 **문서를 먼저** 갱신한다.
@@ -81,7 +81,7 @@
 |------|------|
 | `AGENTS.md` | Cursor 에이전트용 하네스 본문(본 파일). **필독.** |
 | `.cursorrules` | IDE 규칙; **본 파일과 `CLAUDE.md` 필독을 명시**한다. |
-| `CLAUDE.md` | 동일 원칙의 상세 문구·예시. |
+| `CLAUDE.md` | **인수인계 정본** — 행동 하네스·클린·헥사·SOLID·FastAPI·앱별 현황. **필독.** |
 | `CURSOR.md` | 저장소 맥락·검증 루프·하네스 구성 요약. |
 | `docs/DevOPs/` | 백엔드·프론트 **기술 코딩 규칙 정본**. |
 

@@ -40,8 +40,8 @@ alwaysApply: true
 
 상세: `docs/DevOPs/Backend/BACKEND_RULES.md` · `backend/.cursorrules` §0
 
-- `auth_routes` + `UserRepository` + `user_model`(bcrypt). 흐름 로그는 `auth_flow_log`로 레이어당 1줄.
-- `Depends(get_db)` + `AuthError` → HTTPException 매핑.
+- `friday13th`: `signup_router` + `SignupInteractor` + `SignupPgRepository` + `user_model`(bcrypt). 흐름 로그는 레이어당 1줄.
+- `Depends(get_db)` + `ValueError` → `HTTPException` (`signup_router`에서 매핑).
 - 비동기: `async`/`await` 일관, Windows는 `database.py`에서 event loop 정책 한 번만.
 
 ## 변경 시

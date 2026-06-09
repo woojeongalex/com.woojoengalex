@@ -15,12 +15,12 @@ alwaysApply: false
 
 ## 핵심
 
-- `auth_routes` → Controller → Service → `UserRepository` → `user_model` (bcrypt)
+- `friday13th`: `signup_router` → `SignupUseCase` → `SignupInteractor` → `SignupPgRepository` → `user_model` (bcrypt)
 - `role` 서버 `"user"` 고정; 비밀번호·토큰 로그 금지; INSERT 전 중복 재검증
-- `Depends(get_db)`; `async`/`await` 일관; AUTH 로그 `auth_flow_log` 레이어당 1줄
+- `Depends(get_db)`; `async`/`await` 일관; AUTH 로그 레이어당 1줄
 - pass-through-only 계층·과도한 INFO·debug print 커밋 금지
 
 ## 참고
 
-- `backend/apps/main.py`, `secom/app/auth_routes.py`
+- `backend/main.py`, `friday13th/adapter/inbound/api/v1/signup_router.py`
 - `.cursor/rules/coding-standards.mdc`

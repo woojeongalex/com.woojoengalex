@@ -1,0 +1,227 @@
+{
+  "main": {
+    "id": "355766839021b0f8",
+    "type": "split",
+    "children": [
+      {
+        "id": "9ee713087b29b3bc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "90cf7e0fa26e0850",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CLAUDE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CLAUDE"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f242ede453c6ff18",
+    "type": "split",
+    "children": [
+      {
+        "id": "82ca54fad89df1e2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9e10441e248034b5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "검색"
+            }
+          },
+          {
+            "id": "093428e010d386c8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "북마크"
+            }
+          },
+          {
+            "id": "4676e87baa87ae6b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a3e0b884b0084993",
+    "type": "split",
+    "children": [
+      {
+        "id": "7c9ec76bc103b154",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d461189878a2e131",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "백링크"
+            }
+          },
+          {
+            "id": "501747938187c21e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "나가는 링크"
+            }
+          },
+          {
+            "id": "85d3ac241f7f5714",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "태그"
+            }
+          },
+          {
+            "id": "0ae24a91653ab108",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "모든 속성"
+            }
+          },
+          {
+            "id": "0e3e94519551c693",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "개요"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:빠른 전환기 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false,
+      "bases:새 베이스 생성하기": false
+    }
+  },
+  "active": "4676e87baa87ae6b",
+  "lastOpenFiles": [
+    "_harness/config.yaml",
+    "무제 1.md",
+    "_harness/config.yaml.md",
+    "무제 2.md",
+    "무제.md",
+    "CLAUDE.md",
+    "backend/apps/titanic/adapter/outbound/pg/passenger_ruth_survivor_pg_repository.py.tmp.11000.29f666575683",
+    "backend/apps/titanic/adapter/outbound/pg/passenger_rose_model_pg_repository.py.tmp.11000.87e3fe11a868",
+    "backend/apps/titanic/adapter/outbound/pg/passenger_molly_scaler_pg_repository.py.tmp.11000.ff0880877cd3",
+    "backend/apps/titanic/adapter/outbound/pg/passenger_isidor_couple_pg_repository.py.tmp.11000.d12c2f2529f0",
+    "backend/apps/titanic/adapter/outbound/pg/passenger_cal_tester_pg_repository.py.tmp.11000.70fddd4a7a1d",
+    "backend/apps/titanic/adapter/outbound/pg/passenger_jack_trainer_pg_repository.py.tmp.11000.2d49a9aa92ec",
+    "backend/apps/titanic/adapter/outbound/pg/crew_lowe_boat_pg_repository.py.tmp.11000.d5010beb1a65",
+    "backend/apps/titanic/adapter/outbound/pg/crew_hartley_violin_pg_repository.py.tmp.11000.e98eeb670672",
+    "backend/apps/titanic/adapter/outbound/pg/crew_andrews_architect_pg_repository.py.tmp.5112.1fb137327dbe",
+    "backend/apps/titanic/app/use_cases/crew_walter_interactor.py.tmp.17804.4e637d8a5351",
+    "frontend/node_modules/date-fns/docs/webpack.md",
+    "frontend/node_modules/date-fns/docs/unicodeTokens.md",
+    "frontend/node_modules/date-fns/docs/timeZones.md",
+    "frontend/node_modules/date-fns/docs/release.md",
+    "frontend/node_modules/date-fns/docs/logo.svg",
+    "frontend/node_modules/date-fns/docs/logotype.svg",
+    "frontend/node_modules/date-fns/docs/i18nContributionGuide.md",
+    "frontend/node_modules/date-fns/docs/i18n.md",
+    "frontend/node_modules/date-fns/docs/gettingStarted.md",
+    "frontend/node_modules/date-fns/docs/fp.md",
+    "frontend/node_modules/date-fns/docs/cdn.md",
+    "frontend/node_modules/date-fns-jalali/README.md",
+    "frontend/node_modules/date-fns-jalali/LICENSE.md",
+    "frontend/node_modules/date-fns-jalali/CHANGELOG.md",
+    "frontend/node_modules/date-fns-jalali/docs/webpack.md",
+    "frontend/node_modules/date-fns-jalali/docs/unicodeTokens.md",
+    "frontend/node_modules/date-fns-jalali/docs/timeZones.md",
+    "frontend/node_modules/date-fns-jalali/docs/release.md",
+    "frontend/node_modules/date-fns-jalali/docs/logotype.svg",
+    "frontend/node_modules/date-fns-jalali/docs/logo.svg",
+    "frontend/node_modules/date-fns-jalali/docs/i18nContributionGuide.md",
+    "frontend/node_modules/date-fns-jalali/docs/i18n.md",
+    "frontend/node_modules/date-fns-jalali/docs/gettingStarted.md",
+    "frontend/node_modules/date-fns-jalali/docs/fp.md"
+  ]
+}
