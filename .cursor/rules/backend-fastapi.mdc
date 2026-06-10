@@ -1,6 +1,6 @@
 ---
 description: FastAPI 백엔드 — docs/DevOPs/Backend 규칙 필수
-globs: backend/**/*.py
+globs: woojeongai/**/*.py
 alwaysApply: false
 ---
 
@@ -11,7 +11,7 @@ alwaysApply: false
 1. `docs/DevOPs/README.md`
 2. `docs/DevOPs/Backend/BACKEND_RULES.md`
 
-`backend/.cursorrules` §0과 동일. 충돌 시 **docs 본문 우선**.
+`woojeongai/.cursorrules` §0과 동일. 충돌 시 **docs 본문 우선**.
 
 ## 핵심
 
@@ -22,5 +22,5 @@ alwaysApply: false
 
 ## 참고
 
-- `backend/main.py`, `friday13th/adapter/inbound/api/v1/signup_router.py`
+- `woojeongai/main.py`, `friday13th/adapter/inbound/api/v1/signup_router.py`
 - `.cursor/rules/coding-standards.mdc`

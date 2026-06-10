@@ -1,6 +1,6 @@
 ---
 description: Titanic v1 라우터 — andrews 스켈레톤 · walter thin 패턴
-globs: backend/apps/titanic/adapter/inbound/api/v1/**/*_router.py
+globs: woojeongai/apps/titanic/adapter/inbound/api/v1/**/*_router.py
 alwaysApply: false
 ---
 

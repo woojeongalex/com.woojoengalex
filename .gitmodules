@@ -1,9 +1,9 @@
 [submodule "docs"]
 	path = docs
 	url = https://github.com/woojeongalex/com.woojoengalex.docs.git
-[submodule "frontend"]
-	path = frontend
+[submodule "alexview"]
+	path = alexview
 	url = https://github.com/woojeongalex/com.woojoengalex.frontend.git
-[submodule "backend"]
-	path = backend
+[submodule "woojeongai"]
+	path = woojeongai
 	url = https://github.com/woojeongalex/com.woojoengalex.api.git

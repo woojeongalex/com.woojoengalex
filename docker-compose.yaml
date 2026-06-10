@@ -1,0 +1,35 @@
+services:
+  # 1. FastAPI 백엔드 서비스 (8000포트)
+  backend:
+    build: ./woojeongai
+    container_name: titanic_backend_container
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    # environment:
+    #   - ANTHROPIC_API_KEY=내_실제_API_키_입력
+
+  # 2. Next.js 프론트엔드 서비스 (3000포트) — dev 모드 (핫 리로드)
+  frontend:
+    build:
+      context: ./alexview
+      dockerfile: Dockerfile.dev
+    container_name: titanic_frontend_container
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./alexview:/app
+      - /app/node_modules
+    environment:
+      - API_BASE_URL=http://backend:8000
+      - NEXT_PUBLIC_API_BASE_URL=http://backend:8000
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      backend:
+        condition: service_healthy

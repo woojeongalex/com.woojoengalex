@@ -1,12 +1,12 @@
 ---
 description: React 폼 — useState 남용 금지, FormData·상태 객체 압축
-globs: frontend/**/*.tsx
+globs: alexview/**/*.tsx
 alwaysApply: false
 ---
 
 # React 폼 상태 (필수)
 
-`frontend/**/*.tsx` 수정·작성 시 아래를 따른다. 상세·예시 확장: `docs/DevOPs/Frontend/REACT_RULES.md`.
+`alexview/**/*.tsx` 수정·작성 시 아래를 따른다. 상세·예시 확장: `docs/DevOPs/Frontend/REACT_RULES.md`.
 
 ## 원칙
 
@@ -81,10 +81,10 @@ const [password, setPassword] = useState("")
 
 ## 프로젝트 참고
 
-- `frontend/hooks/use-async-action.ts`
-- `frontend/hooks/use-availability-check.ts`
-- `frontend/app/auth/signup-form.tsx`, `login-form.tsx`
-- `frontend/lib/auth-types.ts` (`SignupFormFields`, `EMPTY_SIGNUP`)
+- `alexview/hooks/use-async-action.ts`
+- `alexview/hooks/use-availability-check.ts`
+- `alexview/app/auth/signup-form.tsx`, `login-form.tsx`
+- `alexview/lib/auth-types.ts` (`SignupFormFields`, `EMPTY_SIGNUP`)
 
 ## 사용자 메시지
 

@@ -51,7 +51,7 @@
 ## 2. 저장소 레이아웃
 
 ```
-backend/
+woojeongai/
   main.py                      # FastAPI 앱 · include_router · init_db
   apps/
     friday13th/                # 인증 (signup/login)
@@ -62,8 +62,8 @@ backend/
   logging_setup.py             # 도메인별 로거 등록
 ```
 
-- 작업 루트: `backend/apps/<앱명>/`
-- `PYTHONPATH`에 `backend/apps` 포함 (`uvicorn main:app`, `python main.py`)
+- 작업 루트: `woojeongai/apps/<앱명>/`
+- `PYTHONPATH`에 `woojeongai/apps` 포함 (`uvicorn main:app`, `python main.py`)
 - 로컬: `cd backend` → `python main.py` (포트 8000, reload)
 
 ---
@@ -339,7 +339,7 @@ HTTP Request
 | deps | `adapter/inbound/api/deps/titanic_deps.py` | |
 
 **ORM:** `person_orm`, `booking_orm` — James 업로드 시 person+booking INSERT.  
-**Alembic:** `backend/alembic/versions/20260604_0001_titanic_person_booking_tables.py`
+**Alembic:** `woojeongai/alembic/versions/20260604_0001_titanic_person_booking_tables.py`
 
 **레거시·주의**
 

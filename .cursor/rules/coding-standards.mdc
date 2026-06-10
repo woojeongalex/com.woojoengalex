@@ -38,7 +38,7 @@ alwaysApply: true
 
 ## 백엔드 (FastAPI)
 
-상세: `docs/DevOPs/Backend/BACKEND_RULES.md` · `backend/.cursorrules` §0
+상세: `docs/DevOPs/Backend/BACKEND_RULES.md` · `woojeongai/.cursorrules` §0
 
 - `friday13th`: `signup_router` + `SignupInteractor` + `SignupPgRepository` + `user_model`(bcrypt). 흐름 로그는 레이어당 1줄.
 - `Depends(get_db)` + `ValueError` → `HTTPException` (`signup_router`에서 매핑).
