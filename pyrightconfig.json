@@ -1,0 +1,13 @@
+{
+  "pythonVersion": "3.13",
+  "pythonPlatform": "Windows",
+  "venvPath": "C:/Users/hi/anaconda3/envs",
+  "venv": "venv",
+  "extraPaths": [
+    "./woojeongai",
+    "./woojeongai/apps"
+  ],
+  "typeCheckingMode": "basic",
+  "reportMissingImports": "none",
+  "reportMissingModuleSource": "none"
+}
