@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "97ec70698b6b13e3",
+        "id": "fbb71b47ab0826ca",
         "type": "tabs",
         "children": [
           {
-            "id": "c1cb036ddeafdc09",
+            "id": "787047514a40c19e",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -177,19 +177,20 @@
       "bases:새 베이스 생성하기": false
     }
   },
-  "active": "c1cb036ddeafdc09",
+  "active": "787047514a40c19e",
   "lastOpenFiles": [
-    "woojeongai/apps/music/adapter/outbound/pg/vocal_bard_searcher_pg_repository.py.tmp.1232.96bd57e5e78e",
-    "woojeongai/apps/music/app/use_cases/instrument_andrew_recorder_interactor.py.tmp.1232.9368be6a98e0",
-    "woojeongai/apps/music/app/use_cases/instrument_franz_catalog_interactor.py.tmp.1232.f049a657000a",
-    "woojeongai/apps/music/app/ports/output/vocal_muse_recommender_repository_port.py.tmp.1232.f9145cc606e7",
-    "woojeongai/apps/music/app/ports/output/vocal_bard_searcher_repository_port.py.tmp.1232.d31af81ee0d4",
-    "woojeongai/apps/music/app/ports/input/speech_lumiere_video_use_case.py.tmp.1232.7192c3e04e52",
-    "woojeongai/apps/music/app/ports/input/vocal_muse_recommender_use_case.py.tmp.1232.86ebb0da203e",
-    "woojeongai/apps/music/adapter/inbound/api/schemas/speech_lumiere_video_schema.py.tmp.1232.b8d2a9b85271",
-    "woojeongai/apps/music/adapter/inbound/api/schemas/speech_herald_recorder_schema.py.tmp.1232.3f21c27131e4",
-    "woojeongai/apps/music/app/dtos/suggest_dto.py.tmp.1232.cf517ecb25db",
-    "woojeongai/apps/titanic/app/use_cases/passenger_jack_trainer_interactor.py.tmp.1232.199e6ccbcf4b",
+    "woojeongai/apps/titanic/app/use_cases/passenger_jack_trainer_interactor.py.tmp.8996.866c71f0050f",
+    "woojeongai/apps/titanic/adapter/outbound/orm/__pycache__/passenger_rose_model_strategies.cpython-313.pyc",
+    "woojeongai/apps/titanic/adapter/outbound/repositories/__pycache__/crew_walter_repository.cpython-313.pyc",
+    "woojeongai/apps/titanic/adapter/outbound/repositories/__pycache__/crew_smith_captain_repository.cpython-313.pyc",
+    "woojeongai/apps/titanic/adapter/outbound/repositories/__pycache__/passenger_ruth_survivor_repository.cpython-313.pyc",
+    "woojeongai/apps/titanic/adapter/outbound/repositories/__pycache__/passenger_rose_model_repository.cpython-313.pyc",
+    "woojeongai/apps/titanic/adapter/outbound/repositories/__pycache__/passenger_molly_scaler_repository.cpython-313.pyc",
+    "woojeongai/apps/titanic/adapter/outbound/repositories/__pycache__/crew_lowe_boat_repository.cpython-313.pyc",
+    "woojeongai/apps/titanic/adapter/outbound/repositories/__pycache__/crew_james_repository.cpython-313.pyc",
+    "woojeongai/apps/titanic/adapter/outbound/repositories/__pycache__/passenger_jack_trainer_repository.cpython-313.pyc",
+    "woojeongai/apps/titanic/adapter/outbound/repositories/__pycache__/passenger_isidor_couple_repository.cpython-313.pyc",
+    "woojeongai/apps/titanic/_docs/titanic-walter.md",
     "woojeongai/apps/titanic/_docs/titanic-erd.md",
     "woojeongai/apps/titanic/_docs/titanic0erd.md",
     "woojeongai/apps/titanic/_docs/CLAUDE.md",
@@ -215,7 +216,6 @@
     "vault/Pasted image 20260507114336.png",
     "woojeongai/apps/friday13th/_docs/FRIDAY13TH_HEXAGONAL_STEP_BY_STEP.md",
     "woojeongai/apps/music/-docs/music.md",
-    "woojeongai/_claude/fastapi_rules.md",
     "frontend/node_modules/date-fns/docs/logo.svg",
     "frontend/node_modules/date-fns/docs/logotype.svg",
     "frontend/node_modules/date-fns-jalali/docs/logotype.svg",
