@@ -33,3 +33,69 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+
+  # 3. n8n 워크플로우 자동화 (5678포트)
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n_container
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=false
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - GENERIC_TIMEZONE=Asia/Seoul
+    restart: unless-stopped
+
+  # 4. pgvector (PostgreSQL + vector extension) (5432포트)
+  pgvector:
+    image: pgvector/pgvector:pg17
+    container_name: pgvector_container
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgvector_data:/var/lib/postgresql/data
+    env_file:
+      - ./woojeongai/.env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    restart: unless-stopped
+
+  # 5. Redis (6379포트)
+  redis:
+    image: redis:7-alpine
+    container_name: redis_container
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    env_file:
+      - ./woojeongai/.env
+    restart: unless-stopped
+
+  # 6. Neo4j 그래프 DB (7474 Browser UI, 7687 Bolt)
+  neo4j:
+    image: neo4j:5
+    container_name: neo4j_container
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+    env_file:
+      - ./woojeongai/.env
+    environment:
+      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD}
+    restart: unless-stopped
+
+volumes:
+  n8n_data:
+  pgvector_data:
+  redis_data:
+  neo4j_data:
