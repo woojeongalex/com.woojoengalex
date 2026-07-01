@@ -88,10 +88,8 @@ services:
       - "7687:7687"
     volumes:
       - neo4j_data:/data
-    env_file:
-      - ./woojeongai/.env
     environment:
-      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD}
+      - NEO4J_AUTH=neo4j/1234
     restart: unless-stopped
 
 volumes:
