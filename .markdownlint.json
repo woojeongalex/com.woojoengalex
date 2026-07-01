@@ -1,0 +1,52 @@
+{
+  "comment": "스타 토폴로지 온톨로지 하네스: MD 파일이 올바른 노드(Hub/Spoke) 구조를 가지도록 강제",
+
+  "default": true,
+
+  // --- 헤딩 규칙 ---
+  // 온톨로지 노드는 최상위 헤딩(H1)을 반드시 하나만 가져야 한다 (노드 식별자)
+  "MD041": true,
+  "MD025": { "level": 1 },
+
+  // --- 링크 규칙 ---
+  // 깨진 링크는 허브-스포크 연결 단절을 의미하므로 엄격히 검사
+  "MD042": true,
+
+  // --- 리스트 규칙 ---
+  "MD004": { "style": "dash" },
+  "MD007": { "indent": 2 },
+  "MD030": { "ul_single": 1, "ol_single": 1 },
+
+  // --- 코드 블록 ---
+  "MD031": true,
+  "MD040": true,
+
+  // --- 공백·줄바꿈 ---
+  "MD009": { "br_spaces": 0 },
+  "MD010": true,
+  "MD012": { "maximum": 2 },
+  "MD047": true,
+
+  // --- 테이블 ---
+  "MD055": { "style": "leading_and_trailing" },
+  "MD056": true,
+
+  // --- 비활성화: Obsidian WikiLink [[...]] 허용 ---
+  // [[Link]] 문법은 표준 MD 파서가 이미지로 오해할 수 있으나 온톨로지 링크로 허용
+  "MD045": false,
+
+  // --- Frontmatter (YAML) ---
+  // type: hub | spoke 필드가 없는 노드는 검증 스크립트(validate-harness.py)에서 추가 차단
+  // markdownlint 자체는 frontmatter 존재 여부만 확인 (MD041 + 파일 시작 규칙)
+  "MD022": true,
+  "MD023": true,
+  "MD024": { "allow_different_nesting": true },
+
+  // --- 줄 길이: 온톨로지 노드는 긴 frontmatter 값이 허용됨 ---
+  "MD013": {
+    "line_length": 120,
+    "heading_line_length": 80,
+    "code_block_line_length": 160,
+    "tables": false
+  }
+}

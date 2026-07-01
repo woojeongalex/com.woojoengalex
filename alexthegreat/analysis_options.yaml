@@ -1,28 +1,64 @@
-# This file configures the analyzer, which statically analyzes Dart code to
-# check for errors, warnings, and lints.
-#
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
-
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
+# analysis_options.yaml — Flutter 하네스 린터 설정
+# 카파시 하네스 엔지니어링: 경고가 아닌 에러로 강제하여 커밋 차단
 include: package:flutter_lints/flutter.yaml
 
-linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at https://dart.dev/lints.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
-  rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+analyzer:
+  errors:
+    # 하네스 핵심: 이 규칙들은 warning이 아닌 error로 격상 → CI/pre-commit 차단
+    avoid_print: error
+    prefer_const_constructors: error
+    avoid_unnecessary_containers: error
+    use_super_parameters: error
+    unnecessary_import: error
+    unused_import: error
+    unused_local_variable: error
+    dead_code: error
+    invalid_annotation_target: error
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+  language:
+    strict-casts: true        # as 캐스팅 엄격 검사
+    strict-inference: true    # 타입 추론 실패 시 에러
+    strict-raw-types: true    # 제네릭 raw type 금지
+
+  exclude:
+    - "**/*.g.dart"           # 코드 생성 파일 제외
+    - "**/*.freezed.dart"
+    - "build/**"
+
+linter:
+  rules:
+    # ── 하네스 필수 규칙 ──────────────────────────────────
+    avoid_print: true                      # print() → logger 사용
+    prefer_const_constructors: true        # 불변 위젯 강제
+    avoid_unnecessary_containers: true     # 불필요한 Container 금지
+    use_super_parameters: true             # Dart 3 super 파라미터
+    prefer_single_quotes: true             # 문자열 단일 따옴표 통일
+    require_trailing_commas: true          # 후행 쉼표 → 깔끔한 diff
+
+    # ── 코드 품질 ────────────────────────────────────────
+    always_declare_return_types: true      # 반환 타입 명시 강제
+    avoid_dynamic_calls: true             # dynamic 호출 금지
+    avoid_empty_else: true
+    avoid_redundant_argument_values: true
+    avoid_relative_lib_imports: true       # lib/ 절대 import 강제
+    avoid_slow_async_io: true
+    avoid_type_to_string: true
+    cancel_subscriptions: true
+    close_sinks: true
+    comment_references: true
+    literal_only_boolean_expressions: true
+    no_adjacent_strings_in_list: true
+    no_duplicate_case_values: true
+    prefer_const_declarations: true
+    prefer_final_fields: true              # 변경 없는 필드 final 강제
+    prefer_final_locals: true
+    prefer_void_to_null: true
+    throw_in_finally: false
+    unnecessary_statements: true
+    use_string_buffers: true
+
+    # ── Flutter 특화 ──────────────────────────────────────
+    sized_box_for_whitespace: true         # SizedBox vs Container
+    use_colored_box: true
+    use_decorated_box: true
+    use_full_hex_values_for_flutter_colors: true

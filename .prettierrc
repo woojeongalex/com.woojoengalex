@@ -1,0 +1,41 @@
+{
+  "overrides": [
+    {
+      "files": ["**/*.md", "**/*.mdx"],
+      "options": {
+        // 온톨로지 노드 MD 파일 포맷 규칙
+        // Frontmatter(YAML)와 본문 사이 일관된 간격 유지
+        "proseWrap": "preserve",
+        "printWidth": 120,
+        "tabWidth": 2,
+        "useTabs": false,
+        // Obsidian WikiLink [[...]] 구문이 깨지지 않도록 singleQuote 비활성화
+        "singleQuote": false,
+        // 허브-스포크 링크 테이블이 정렬된 상태로 유지되도록 embeddedLanguageFormatting 허용
+        "embeddedLanguageFormatting": "auto"
+      }
+    },
+    {
+      "files": ["**/*.yaml", "**/*.yml"],
+      "options": {
+        // Frontmatter YAML 설정 파일 포맷
+        "tabWidth": 2,
+        "singleQuote": false
+      }
+    },
+    {
+      "files": ["**/*.py"],
+      "options": {
+        // Python 파일은 Black 포매터 우선 — Prettier는 non-Python에만 적용
+        "parser": "babel"
+      }
+    },
+    {
+      "files": ["**/*.json"],
+      "options": {
+        "printWidth": 100,
+        "tabWidth": 2
+      }
+    }
+  ]
+}

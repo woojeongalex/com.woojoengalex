@@ -1,0 +1,114 @@
+# .pre-commit-config.yaml — 모노레포 하네스 게이트키퍼
+# 카파시 하네스 엔지니어링: 커밋 전 자동 실행, 통과 못 하면 커밋 자체 차단
+#
+# 설치:
+#   pip install pre-commit
+#   pre-commit install          ← .git/hooks 에 자동 등록
+#
+# 수동 전체 실행:
+#   pre-commit run --all-files
+
+repos:
+  # ── 공통 기본 검사 ───────────────────────────────────────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ["--maxkb=500"]
+      - id: detect-private-key              # 실수로 키 커밋 차단
+      - id: no-commit-to-branch
+        args: ["--branch", "main"]          # main 직접 커밋 차단
+
+
+  # ── Python (woojeongai) ──────────────────────────────────────
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: "[Python] Ruff Lint"
+        entry: bash -c 'cd woojeongai && ruff check . --fix'
+        language: system
+        files: ^woojeongai/.*\.py$
+        pass_filenames: false
+
+      - id: ruff-format
+        name: "[Python] Ruff Format"
+        entry: bash -c 'cd woojeongai && ruff format .'
+        language: system
+        files: ^woojeongai/.*\.py$
+        pass_filenames: false
+
+      - id: mypy
+        name: "[Python] MyPy Type Check"
+        entry: bash -c 'cd woojeongai && mypy . --ignore-missing-imports'
+        language: system
+        files: ^woojeongai/.*\.py$
+        pass_filenames: false
+
+
+  # ── Next.js (alexview) ───────────────────────────────────────
+  - repo: local
+    hooks:
+      - id: eslint
+        name: "[Next.js] ESLint"
+        entry: bash -c 'cd alexview && pnpm lint'
+        language: system
+        files: ^alexview/.*\.(ts|tsx|js|jsx)$
+        pass_filenames: false
+
+      - id: prettier-frontend
+        name: "[Next.js] Prettier Format"
+        entry: bash -c 'cd alexview && pnpm format'
+        language: system
+        files: ^alexview/.*\.(ts|tsx|json|md)$
+        pass_filenames: false
+
+      - id: tsc
+        name: "[Next.js] TypeScript Check"
+        entry: bash -c 'cd alexview && pnpm tsc --noEmit'
+        language: system
+        files: ^alexview/.*\.(ts|tsx)$
+        pass_filenames: false
+
+
+  # ── Flutter (alexthegreat) ───────────────────────────────────
+  - repo: local
+    hooks:
+      - id: flutter-analyze
+        name: "[Flutter] dart analyze"
+        entry: bash -c 'cd alexthegreat && dart analyze --fatal-infos'
+        language: system
+        files: ^alexthegreat/.*\.dart$
+        pass_filenames: false
+
+      - id: flutter-format
+        name: "[Flutter] dart format"
+        entry: bash -c 'cd alexthegreat && dart format --set-exit-if-changed .'
+        language: system
+        files: ^alexthegreat/.*\.dart$
+        pass_filenames: false
+
+
+  # ── 온톨로지 하네스 검증 (star topology) ─────────────────────
+  - repo: local
+    hooks:
+      - id: harness-validator
+        name: "[Harness] Star Topology Ontology Check"
+        entry: python scripts/validate-harness.py --strict
+        language: system
+        files: ^(vault|woojeongai/apps/star_craft|_docs)/.*\.md$
+        pass_filenames: false
+
+
+  # ── Markdown 린트 ─────────────────────────────────────────────
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.41.0
+    hooks:
+      - id: markdownlint
+        name: "[Markdown] markdownlint"
+        args: ["--config", ".markdownlint.json", "--fix"]
+        files: \.md$
